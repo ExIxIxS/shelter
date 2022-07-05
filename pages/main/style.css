@@ -292,14 +292,103 @@ header .active-link {
     width: 100%;
     height: 435px;
     margin: 60px 0;
-    background: green;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttom-slider-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 21px 19px;
+    position: relative;
+    top: 192px;
+    width: 52px;
+    height: 52px;
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+}
+
+.buttom-slider-arrow:hover {
+    background-color: #F1CDB3;
+}
+
+#buttom-left {
+    margin: 0 53px 0 0 ;
+}
+
+#buttom-right {
+    margin: 0 0 0 53px;
+    transform: rotate(180deg);
+}
+
+.card {
+    width: 270px;
+    height: 435px;
+    background: #FAFAFA;
+    border-radius: 9px;
+}
+.card:hover {
+    cursor: pointer;
+}
+
+.card:hover .buttom-card {
+    background-color: #F1CDB3;
+    border-color:#FAFAFA;
+}
+
+.central-card {
+    margin: 0 90px;
+}
+
+.card p {
+    width: 74px;
+    height: 23px;
+    margin: 30px auto;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.buttom-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 45px;
+    margin: 0 auto;
+    width: 187px;
+    height: 52px;
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: #292929;
+    text-decoration: none;
+}
+
+.buttom-card:hover {
+    padding: 15px 35px;
+    font-size: 17px;
+}
+
+.card img {
+    border-radius: 9px 9px 0px 0px;
+    display: block;
 }
 
 #buttom-get-know {
     width: 261px;
     height: 52px;
     display: block;
-    margin-top: 42px;
     background: #F1CDB3;
     border-radius: 100px;
     padding: 15px 45px;
@@ -312,6 +401,12 @@ header .active-link {
     text-align: center;
     color: #292929;
     text-decoration: none;
+}
+
+#buttom-get-know:hover {
+    background-color: #FAFAFA;
+    border: 2px solid #F1CDB3;
+    padding: 15px 35px;
 }
 
 #help-screen {
