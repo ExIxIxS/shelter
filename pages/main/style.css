@@ -1,3 +1,37 @@
+/* old-standard-tt-regular - latin
+    analog font for 'Georgia'
+*/
+@font-face {
+    font-family: 'Old Standard TT';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../../assets/fonts/old-standard-tt-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../../assets/fonts/old-standard-tt-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+/* open-sans-regular - latin
+    analog font for 'Arial'
+*/
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../../assets/fonts/open-sans-v29-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../../assets/fonts/open-sans-v29-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+/* border-box model for all elements */
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 body {
     width: 100%;
     background-color: rgba(75, 72, 65, 0.87);
@@ -7,7 +41,6 @@ body {
     width: 1280px;
     padding: 0;
     margin: auto;
-    box-sizing: border-box;
 }
 
 #start-screen {
@@ -42,7 +75,6 @@ header {
     position: relative;
     top: 60px;
     margin: 0 40px 0 40px;
-    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -52,7 +84,6 @@ header {
     width: 184px;
     height: 60px;
     padding: 0;
-    box-sizing: border-box;
 }
 
 #logo-title {
@@ -94,7 +125,6 @@ nav {
     width: 443px;
     height: 27px;
     padding: 0;
-    box-sizing: border-box;
     align-items: center;
 }
 
@@ -111,7 +141,6 @@ ul {
 header li {
     display: flex;
     align-items: center;
-    box-sizing: border-box;
 
 }
 
@@ -129,4 +158,68 @@ header a {
 
 header .active-link {
     border-bottom: 3px solid #F1CDB3;
+}
+
+#start-screen-content {
+    width: 1200px;
+    height: 728px;
+    margin: 0px 40px 0 40px;
+    position: relative;
+    top: 120px;
+}
+
+#start-screen-content img {
+    position: absolute;
+    top: 0px;
+    left: 542px;
+}
+
+#not-only {
+    width: 460px;
+    height: 322px;
+    position: relative;
+    top: 163px;
+}
+
+#not-only h2 {
+    width: 310px;
+    height: 114px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 130%;
+    color: #FFFFFF;
+}
+
+#not-only p {
+    width: 460px;
+    height: 72px;
+    margin-top: 42px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    text-align: justify;
+    color: #CDCDCD;
+}
+
+#buttom-make-friend {
+    width: 207px;
+    height: 52px;
+    display: block;
+    margin-top: 42px;
+    background: #F1CDB3;
+    border-radius: 100px;
+    padding: 15px 45px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: #292929;
+    text-decoration: none;
 }
