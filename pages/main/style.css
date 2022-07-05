@@ -39,7 +39,6 @@ body {
 
 .contener_centered {
     width: 1280px;
-    padding: 0;
     margin: auto;
 }
 
@@ -47,26 +46,6 @@ body {
     height: 908px;
     background-image: url("../../assets/images/start-screen-background.png");
     /* Needs to add background gradient */
-}
-
-#about-screen {
-    height: 588px;
-}
-
-#pets-screen {
-    height: 877px;
-}
-
-#help-screen {
-    height: 611px;
-}
-
-#donate-screen {
-    height: 462px;
-}
-
-#contacts-screen {
-    height: 350px;
 }
 
 header {
@@ -222,4 +201,127 @@ header .active-link {
     text-align: center;
     color: #292929;
     text-decoration: none;
+}
+
+#about-screen {
+    height: 588px;
+    background: #FFFFFF;
+    padding: 80px 40px 100px 40px;
+    position: inherit;
+}
+
+#about-content {
+    position: relative;
+    top: 0;
+    width: 1200px;
+    height: 408px;
+    margin: 0 ;
+}
+
+#about-content img {
+    position: absolute;
+    top: 0px;
+    left: 175px;
+    width: 300px;
+    height: 408px;
+}
+
+#about-content-text {
+    width: 430px;
+    height: 380px;
+    position: relative;
+    top: 14px;
+    left: 595px;
+    margin: 0;
+}
+
+#about-content-text h3{
+    width: 370px;
+    height: 90px;
+    left: 0px;
+    top: 0px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+#about-content-text p{
+    margin-top: 25px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14.5px;
+    line-height: 160%;
+    color: #4C4C4C;
+}
+
+#pets-screen {
+    height: 877px;
+    background: #F6F6F6;
+    padding: 80px 40px 100px 40px;
+}
+
+#pets-screen-content {
+    width: 1200px;
+    height: 697px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#pets-screen-content h3{
+    width: 400px;
+    height: 90px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 130%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+#slider {
+    width: 100%;
+    height: 435px;
+    margin: 60px 0;
+    background: green;
+}
+
+#buttom-get-know {
+    width: 261px;
+    height: 52px;
+    display: block;
+    margin-top: 42px;
+    background: #F1CDB3;
+    border-radius: 100px;
+    padding: 15px 45px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: #292929;
+    text-decoration: none;
+}
+
+#help-screen {
+    height: 611px;
+}
+
+#donate-screen {
+    height: 462px;
+}
+
+#contacts-screen {
+    height: 350px;
 }

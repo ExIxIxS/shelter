@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shelter</title>
     <link rel="stylesheet" type="text/css" href="../../assets/styles/reset.css">
     <link rel="stylesheet" type="text/css" href="../../assets/styles/normalize.css">
@@ -11,10 +12,10 @@
 <body>
     <div id="start-screen" class="contener_centered">
         <header>
-            <div id="logo">
+            <a id="logo" href="">
                 <h1 id="logo-title">Cozy House</h1>
                 <h2 id="logo-subtitle">Shelter for pets in Boston</h2>
-            </div>
+            </a>
             <nav>
                 <ul>
                     <li><a class="active-link" href="#about-screen">About the shelter</a></li>
@@ -37,10 +38,28 @@
         </div>
     </div>
     <div id="about-screen" class="contener_centered">
-        <p>About our Shelter</p>
+        <div id="about-content">
+            <img src="../../assets/images/about-pets.png" alt="Pets" width="300" height="408">
+            <div id="about-content-text">
+                <h3>About the shelter “Cozy House”</h3>
+                <p>Currently we have 121 dogs and 342 cats on our hands and statistics show that only 20% of them will find a family.
+                     The others will continue to live with us and will be waiting for a lucky chance to become dearly loved.</p>
+                <p>We feed our wards with the best food and make sure that they do not get sick, feel comfortable (including psychologically) and well.
+                     We are supported by 87 volunteers and 28 employees of various skill levels. About 12% of the animals are taken by the shelter staff.
+                     Taking care of the animals, they become attached to the pets and would hardly ever leave them alone.</p>
+            </div>
+        </div>
     </div>
     <div id="pets-screen" class="contener_centered">
-        <p>Pets</p>
+        <div id="pets-screen-content">
+            <h3>Our friends who are looking for a house</h3>
+            <div id="slider">
+                SLIDER HERE
+            </div>
+            <a id="buttom-get-know" href="../pets/pets.html" target="_blank">
+                Get to know the rest
+            </a>
+        </div>
     </div>
     <div id="help-screen" class="contener_centered">
         <p>Help</p>
