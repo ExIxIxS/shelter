@@ -184,7 +184,7 @@ header .active-link {
     color: #CDCDCD;
 }
 
-#buttom-make-friend {
+#button-make-friend {
     width: 207px;
     height: 52px;
     display: block;
@@ -263,17 +263,12 @@ header .active-link {
     height: 877px;
     background: #F6F6F6;
     padding: 80px 40px 100px 40px;
-}
-
-#pets-screen-content {
-    width: 1200px;
-    height: 697px;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 }
 
-#pets-screen-content h3{
+#pets-screen h3{
     width: 400px;
     height: 90px;
     font-family: 'Old Standard TT', serif;
@@ -296,7 +291,11 @@ header .active-link {
     justify-content: space-between;
 }
 
-.buttom-slider-arrow {
+.button {
+    transition-duration: 0.4s;
+}
+
+.button-slider-arrow {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -305,19 +304,21 @@ header .active-link {
     top: 192px;
     width: 52px;
     height: 52px;
+    background-color: #F6F6F6;
     border: 2px solid #F1CDB3;
     border-radius: 100px;
 }
 
-.buttom-slider-arrow:hover {
+.button-slider-arrow:hover {
+    cursor: pointer;
     background-color: #F1CDB3;
 }
 
-#buttom-left {
+#button-left {
     margin: 0 53px 0 0 ;
 }
 
-#buttom-right {
+#button-right {
     margin: 0 0 0 53px;
     transform: rotate(180deg);
 }
@@ -332,7 +333,7 @@ header .active-link {
     cursor: pointer;
 }
 
-.card:hover .buttom-card {
+.card:hover .button-card {
     background-color: #F1CDB3;
     border-color:#FAFAFA;
 }
@@ -355,7 +356,7 @@ header .active-link {
     color: #545454;
 }
 
-.buttom-card {
+.button-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -375,7 +376,7 @@ header .active-link {
     text-decoration: none;
 }
 
-.buttom-card:hover {
+.button-card:hover {
     padding: 15px 35px;
     font-size: 17px;
 }
@@ -385,17 +386,18 @@ header .active-link {
     display: block;
 }
 
-#buttom-get-know {
+#button-get-know {
     width: 261px;
     height: 52px;
     display: block;
     background: #F1CDB3;
     border-radius: 100px;
+    border: 2px solid #F1CDB3;
     padding: 15px 45px;
     font-family: 'Old Standard TT', serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 130%;
     letter-spacing: 0.06em;
     text-align: center;
@@ -403,18 +405,82 @@ header .active-link {
     text-decoration: none;
 }
 
-#buttom-get-know:hover {
+#button-get-know:hover {
     background-color: #FAFAFA;
     border: 2px solid #F1CDB3;
     padding: 15px 35px;
+    font-size: 17px;
 }
 
 #help-screen {
     height: 611px;
+    background: #FFFFFF;
+    padding: 80px 40px 100px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#help-screen h3 {
+    width: 308px;
+    height: 90px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 130%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.grid-container-x5 {
+    width: 1026px;
+    height: 113px;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 82px 150px 60px 153px 101px;
+    align-content: space-between;
+}
+
+.grid-container-x4 {
+    width: calc(1026px - 168px);
+    height: 113px;
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: 89px 101px 165px 143px;
+    align-content: space-between;
+}
+
+.grid-container > li {
+    height: 113px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+}
+
+.grid-container h4 {
+    height: 23px;
+    margin-top: 30px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: #545454;
 }
 
 #donate-screen {
     height: 462px;
+    background: #F6F6F6;
 }
 
 #contacts-screen {
