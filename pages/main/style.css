@@ -54,7 +54,7 @@ body {
 
 #start-screen {
     height: 908px;
-    background-image: url("../../assets/images/start-screen-background.png");
+    background: url("../../assets/images/gradient-noise.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%, #211F20);
     /* Needs to add background gradient */
 }
 
@@ -490,7 +490,7 @@ header .active-link {
 
 #donate-screen {
     height: 462px;
-    background: #FFFFFF;
+    background: #F6F6F6;
     padding: 80px 182px 100px 183px;
     display: flex;
     justify-content: space-between;
@@ -541,7 +541,7 @@ header .active-link {
 }
 
 #button-donate:hover {
-    background: #F6F6F6;
+    background: #FFFFFF;
 }
 
 #button-donate h4 {
@@ -568,6 +568,66 @@ header .active-link {
     overflow: hidden;
 }
 
-#contacts-screen {
+footer {
     height: 350px;
+    background: url("../../assets/images/gradient-noise.png"), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%, #211F20);
+    padding: 40px 40px 0 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.block-footer {
+    height: 234px;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.block-footer a {
+    text-decoration: none;
+}
+
+#contacts {
+    width: 278px;
+}
+
+#adress {
+    width: 302px;
+}
+
+.block-footer h3 {
+    height: 90px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: #FFFFFF;
+}
+
+.block-footer h4 {
+    padding-left: 20px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: #F1CDB3;
+}
+
+.block-footer-item {
+    height: 32px;
+    display: flex;
+    align-items: center;
+}
+
+#adress h3 {
+    width: 270px;
+}
+
+#boston {
+    height: 46px;
 }
