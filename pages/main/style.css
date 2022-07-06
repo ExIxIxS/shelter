@@ -8,7 +8,7 @@
     src: local(''),
          url('../../assets/fonts/old-standard-tt-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
          url('../../assets/fonts/old-standard-tt-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-  }
+}
 
 /* open-sans-regular - latin
     analog font for 'Arial'
@@ -20,7 +20,17 @@
     src: local(''),
          url('../../assets/fonts/open-sans-v29-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
          url('../../assets/fonts/open-sans-v29-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-  }
+}
+
+/* open-sans-italic - latin */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: local(''),
+         url('../../assets/fonts/open-sans-v29-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../../assets/fonts/open-sans-v29-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
 
 /* border-box model for all elements */
 
@@ -480,7 +490,82 @@ header .active-link {
 
 #donate-screen {
     height: 462px;
+    background: #FFFFFF;
+    padding: 80px 182px 100px 183px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#donate-screen-content {
+    width: 380px;
+    height: 282px;
+}
+
+#donate-screen-content h3 {
+    width: 300px;
+    height: 90px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+#donate-screen-content h5 {
+    width: 307px;
+    height: 17px;
+    margin: 20px 0;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+#button-donate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    width: 349px;
+    height: 43px;
+    background: #F1CDB3;
+    border-radius: 9px;
+    text-decoration: none;
+}
+
+#button-donate:hover {
     background: #F6F6F6;
+}
+
+#button-donate h4 {
+    height: 19px;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.04em;
+    color: #545454;
+}
+
+#donate-screen-content p {
+    width: 380px;
+    height: 72px;
+    margin-top: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #B2B2B2;
+    overflow: hidden;
 }
 
 #contacts-screen {
