@@ -630,9 +630,10 @@ footer .contener_centered {
     width: 302px;
 }
 
-.graphic-location {
+.graphic-location, .graphic-location img {
     width: 22px;
     height: 32px;
+    display: inline-flex
 }
 
 .block-footer h3 {
