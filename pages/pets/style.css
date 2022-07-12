@@ -101,9 +101,9 @@ h1 {
     font-size: 32px;
     line-height: 110%;
     letter-spacing: 0.06em;
-    color: #F1CDB3;
+    color: #545454;
     display: block;
-    margin-block-start: 0;
+    margin:0
 }
 
 h2 {
@@ -162,7 +162,7 @@ h4 {
     font-size: 13px;
     line-height: 15px;
     letter-spacing: 0.1em;
-    color: #FFFFFF;
+    color: #292929;
     display: block;
     margin: 10px 0 0 4px;
 }
@@ -198,11 +198,11 @@ header a {
     font-weight: 400;
     font-size: 15px;
     line-height: 160%;
-    color: #CDCDCD;
+    color: #545454;
 }
 
 nav a:hover {
-    color: #FAFAFA;
+    color: #292929;
 }
 
 nav a:active {
@@ -213,7 +213,7 @@ nav a:active {
 .active-link {
     padding-top: 3px;
     border-bottom: 3px solid #F1CDB3;
-    color: #FAFAFA;
+    color: #545454;
 }
 
 #pets-screen {
@@ -320,6 +320,54 @@ nav a:active {
 .card img {
     border-radius: 9px 9px 0px 0px;
     display: block;
+}
+
+#pagination-container {
+    width: 340px;
+    height: 52px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    background-color: #F6F6F6;
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+    text-align: center;
+    font-family: 'Old Standard TT', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 115%;
+    color: #292929;
+}
+
+.page-button:disabled {
+    border: 2px solid #CDCDCD;
+    color: #CDCDCD;
+}
+.page-button:hover:not(:disabled, .page-button-number) {
+    cursor: pointer;
+    background-color: #FDDCC4;
+    border: 2px solid #FDDCC4;
+}
+
+.page-button-number {
+    font-size: 20px;
+    background-color: #F1CDB3;
+    border: 2px solid #F1CDB3;
+}
+
+.page-button:active:not(:disabled) {
+    background-color: #F1CDB3;
+    border: 2px solid #F1CDB3;
 }
 
 footer {
