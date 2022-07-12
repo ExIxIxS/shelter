@@ -136,23 +136,6 @@ h4 {
     transition-duration: 0.4s;
 }
 
-.button:hover {
-    cursor: pointer;
-}
-
-.button-dark {
-    background: #F1CDB3;
-}
-
-.button-dark:hover {
-    background: #FDDCC4;
-}
-
-.button-light:hover {
-    background: #FDDCC4;
-    border-color: #00000000;
-}
-
 #logo h2 {
     width: 179px;
     height: 15px;
@@ -241,29 +224,6 @@ nav a:active {
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: space-between;
-}
-
-.button-slider-arrow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 22px 19px;
-    position: relative;
-    top: 192px;
-    width: 52px;
-    height: 52px;
-    background-color: #F6F6F6;
-    border: 2px solid #F1CDB3;
-    border-radius: 100px;
-}
-
-#button-left {
-    margin: 0 53px 0 0 ;
-}
-
-#button-right {
-    margin: 0 0 0 53px;
-    transform: rotate(180deg);
 }
 
 .card {
