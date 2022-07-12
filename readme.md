@@ -1,1 +1,1 @@
-https://ExIxIxS.github.io/shelter/
+https://ExIxIxS.github.io/shelter/pages/main/
