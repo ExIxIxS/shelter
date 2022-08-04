@@ -664,6 +664,7 @@ footer .container_centered {
 
     .container_centered {
         width: 100%;
+        height: 100%;
         margin: 0 auto;
     }
 
@@ -810,10 +811,11 @@ footer .container_centered {
 
     footer {
         height: calc(30vw*100/768 + 234px + 65px + 310vw*100/768 ); /*padding + text content + margin + image*/
+        max-height: 700px;
     }
 
     footer .container_centered {
-        padding: calc(30vw*100/768) calc(64vw*100/768) 0 calc(64vw*100/768);
+        padding: 30px calc(64vw*100/768) 0 calc(64vw*100/768);
         flex-direction: column;
         align-items: center;
     }
@@ -833,6 +835,8 @@ footer .container_centered {
     #img-puppy-bye {
         width: calc(300vw*100/768);
         height: calc(310vw*100/768);
+        max-width: 351px;
+        max-height: 363px;
         margin-top: 65px;
     }
 }
