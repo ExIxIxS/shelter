@@ -441,7 +441,7 @@ nav a:active {
 
 
 #help-screen {
-    height: 611px;
+    min-height: 611px;
 }
 
 #help-screen .container_centered {
@@ -454,34 +454,38 @@ nav a:active {
 #help-screen h3 {
     width: 308px;
     height: 90px;
+    margin-bottom: 60px;
     display: flex;
     align-items: center;
     text-align: center;
     color: #545454;
 }
 
-.help-icon {
-    width: 60px;
-    height: 60px;
-}
-
-
-
-.flex-grid-container > li {
-    width: 170px;
+.help-card {
     height: 113px;
+    margin: 0 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     font-size: 30px;
+    justify-content: space-between;
+}
+
+.help-card-first {
+    margin: 0 60px 0 0;
+}
+
+.help-card-last {
+    margin: 0 0 0 60px;
 }
 
 .flex-grid-container {
     width: 1026px;
-    height: 281px;
+    min-height: 281px;
     padding: 0;
     margin: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -490,7 +494,6 @@ nav a:active {
 
 .flex-grid-container h4 {
     height: 23px;
-    margin-top: 30px;
     display: flex;
     align-items: center;
     text-align: center;
@@ -743,4 +746,23 @@ footer .container_centered {
     .right-card {
         margin: 0 1.5vw 0 2.6vw;
     }
+
+    #help-screen .container_centered {
+        padding: 80px 70px 100px 70px;
+    }
+
+    .help-card {
+        width: calc(170vw*100/768);
+        height: calc(113vw*100/768);
+        margin: 0;
+    }
+
+    .flex-grid-container {
+        width: 100%;
+        min-height: 450px;
+        justify-content: space-between;
+    }
+
+
+
 }
