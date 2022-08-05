@@ -89,6 +89,10 @@ header {
     height: 60px;
 }
 
+#logo-menu {
+    display: none;
+}
+
 h1 {
     width: 190px;
     height: 35px;
@@ -162,6 +166,12 @@ h4 {
     color: #FFFFFF;
     display: block;
     margin: 10px 0 0 4px;
+}
+
+.drop-button {
+    width: 30px;
+    height: 22px;
+    display: none;
 }
 
 nav {
@@ -704,6 +714,204 @@ footer .container_centered {
 
     #not-only p {
         margin: 0 auto;
+    }
+
+    #button-make-friend {
+        align-self: center;
+        margin: 0;
+    }
+
+    #start-screen-content .graphic {
+        width: 569px;
+        height: 593px;
+        margin-right: 4vw;
+        align-self: flex-end;
+    }
+
+    #about-screen {
+        min-height: 1048px;
+    }
+
+    #about-content {
+        width: 100%;
+        height: inherit;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+
+    #about-content-text {
+        margin: 0;
+    }
+
+    #about-content .graphic {
+        width: 39vw;
+        height: 53vw;
+        margin-top: calc(80vw*100/768);
+    }
+
+    .central-card {
+        margin: 0;
+        display: none;
+    }
+
+    .card {
+        margin: 0;
+    }
+
+    .left-card {
+        margin: 0 2.6vw 0 1.5vw;
+    }
+
+    .right-card {
+        margin: 0 1.5vw 0 2.6vw;
+    }
+
+    #help-screen .container_centered {
+        padding: calc(80vw*100/768) calc(70vw*100/768) calc(100vw*100/768) calc(70vw*100/768);
+    }
+
+    .help-icon {
+        width: calc(60vw*100/768);
+        height: calc(60vw*100/768);
+    }
+
+    .help-card {
+        width: calc(170vw*100/768);
+        height: calc((170vw*100/768)*(113/170));
+        margin: 0;
+    }
+
+    .flex-grid-container {
+        width: 100%;
+        min-height: calc(450vw*100/768);
+        justify-content: space-between;
+    }
+
+    #help-screen h3 {
+        width: calc(308vw*100/768);
+        height: calc(90vw*100/768);
+        font-size: calc(35vw*100/768);
+    }
+
+    .flex-grid-container h4 {
+        height: calc(23vw*100/768);
+        font-size: calc(20vw*100/768);
+    }
+
+    #donate-screen {
+        height: calc(783vw*100/768);
+        max-height: calc(261vw*100/768 + 342px + 180px); /*image + text + padding*/
+    }
+
+    #donate-screen .container_centered {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        height: 100%;
+        padding: 80px 132px 100px 132px;
+    }
+
+    #img-lying-dog {
+        width: calc(505vw*100/768);
+        height: calc(261vw*100/768);
+        margin-top: 60px;
+    }
+
+    footer {
+        height: calc(30vw*100/768 + 234px + 65px + 310vw*100/768 ); /*padding + text content + margin + image*/
+        max-height: 700px;
+    }
+
+    footer .container_centered {
+        padding: 30px calc(64vw*100/768) 0 calc(64vw*100/768);
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-flex-grid {
+        width: calc(640vw*100/768);
+    }
+
+    .block-footer {
+        margin: 0;
+    }
+
+    #adress {
+        width: 290px;
+    }
+
+    #img-puppy-bye {
+        width: calc(300vw*100/768);
+        height: calc(310vw*100/768);
+        max-width: 351px;
+        max-height: 363px;
+        margin-top: 65px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+    .container_centered {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .drop-button {
+        display: block;
+    }
+
+    section, footer {
+        min-width: 768px;
+    }
+
+    header {
+        width: 100%;
+        height: 150px;
+        margin: 0;
+        padding: 30px 53px 60px 10px;
+    }
+
+    #start-screen {
+        height: 1165px;
+    }
+
+    #start-screen-content {
+        width: 100%;
+        height: 1015px;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #not-only {
+        width: calc(300vw*100/320);
+        min-height: 296px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #not-only h2 {
+        width: 100%;
+        height:auto;
+        text-align: center;
+    }
+
+    #not-only p {
+        margin: 0 auto;
+        width: 100%;
+        height:auto;
+        text-align: center;
     }
 
     #button-make-friend {
