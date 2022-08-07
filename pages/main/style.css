@@ -826,7 +826,7 @@ footer .container_centered {
     }
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (max-width: 767px) {
 
     .container_centered {
         width: 100%;
@@ -1178,6 +1178,43 @@ footer .container_centered {
         height: calc(269vw*100/320);
         max-width: 345px;
         max-height: 356px;
+        margin-top: calc(40vw*100/320);
+    }
+}
+
+@media (max-width: 319px) {
+
+    #about-screen {
+        min-height: calc(950vw*100/320);
+    }
+
+    #pets-screen {
+        min-height: calc(791vw*100/320);
+    }
+
+    #help-screen {
+        min-height: calc(745vw*100/320);
+    }
+
+    #donate-screen {
+        min-height: calc(542.2vw*100/320);
+    }
+
+    #about-content-text h3, #pets-screen h3, #donate-screen-content h3 {
+        height: auto;
+    }
+
+    footer {
+        min-height: calc(809vw*100/320);
+    }
+
+    #pets-screen h3 {
+        width: 300px;
+        height: 64px;
+        font-size: 25px;
+    }
+
+    .block-footer-item {
         margin-top: calc(40vw*100/320);
     }
 }
