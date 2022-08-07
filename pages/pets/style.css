@@ -76,6 +76,9 @@ img {
 
 #page-start {
     height: 120px;
+    position:-webkit-sticky;
+    position:sticky;
+    top: 0;
 }
 
 header {
