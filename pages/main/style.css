@@ -44,6 +44,10 @@ body {
     flex-direction: column;
 }
 
+body.opened-popup {
+    overflow-y: hidden;
+}
+
 .container_centered {
     width: 1280px;
     margin: 0 auto;
@@ -425,7 +429,107 @@ nav a:active {
     text-decoration: none;
 }
 
+.popup-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(41, 41, 41, 0.6);
+    z-index: 8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.popup-window:hover {
+    cursor: pointer;
+}
+
+.popup-window *:hover {
+    cursor:auto;
+}
+
+.popup-window .popup-button:hover, .popup-window .popup-button img:hover {
+    cursor: pointer;
+}
+
+.popup-content {
+    width: 900px;
+    height: 500px;
+    background: #FAFAFA;
+    border-radius: 9px;
+    display: flex;
+}
+
+.popup-content:hover {
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+
+.popup-image {
+    width: 500px;
+    height: 500px;
+    border-radius: 9px 0px 0px 9px;
+}
+
+.popup-image img {
+    border-radius: inherit;
+}
+
+.popup-text {
+    width: 351px;
+    height: 362px;
+    margin: 50px 20px 88px 29px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.popup-pet-properties {
+    height: 102px;
+    display: flex;
+    padding-left: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style: outside;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+}
+
+.popup-pet-properties li::marker {
+    color: #F1CDB3;
+    font-size: 10px;
+  }
+
+.popup-text h3 {
+    margin-bottom: 10px;
+}
+
+.popup-text h5 {
+    margin: 40px 0;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+}
+
+.popup-button {
+    width: 52px;
+    height: 52px;
+    position: fixed;
+    left: calc(50vw + 445px);
+    bottom: calc(50vh + 250px);
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-button img {
+    width: 12px;
+}
 
 #help-screen {
     min-height: 611px;
