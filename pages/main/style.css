@@ -169,7 +169,7 @@ h4 {
 
 .drop-button {
     width: 30px;
-    height: 30px;
+    height: 22px;
     display: none;
     z-index: 10;
 }
@@ -380,7 +380,6 @@ nav a:active {
 }
 
 .card p {
-    width: 74px;
     height: 23px;
     margin: 30px auto;
     font-family: 'Old Standard TT', serif;
@@ -1237,7 +1236,7 @@ footer .container_centered {
     .popup-button {
 
         left: calc(50vw + (240px/2 - 22px));
-        bottom: calc(50vh + 170.5px);
+        bottom: calc(50vh + 341px/2);
     }
 
     #help-screen {

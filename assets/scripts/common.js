@@ -21,6 +21,16 @@ const closeMenu = function() {
     document.querySelector('.drop-button').classList.remove('opened-menu');
 }
 
+const changeMenuButtonScin = function() {
+    const imageButtonElement = document.querySelector('.img-drop-button');
+    console.log(imageButtonElement.src);
+    if (imageButtonElement.src.search(/drop_button-light.svg/) !== -1) {
+        imageButtonElement.src = '../../assets/icons/drop_button-dark.svg';
+    } else {
+        imageButtonElement.src = '../../assets/icons/drop_button-light.svg';
+    }
+}
+
 const getRandomInt = function(maxInt, minInt = 0) {
     return Math.floor(Math.random() * (maxInt - minInt + 1)) + minInt; //max and min inclusive
 }
@@ -116,6 +126,39 @@ export const mainPageClickInteractive = function(event, petsArray) {
         case (event.target.classList.contains('button-slider-arrow') || event.target.classList.contains('arrow-image')):
             updateSliderRandom(petsArray);
             break;
+        //clicking on pet`s card
+        case (event.target.classList.contains('open-popup')):
+            let targetCardElement = event.target;
+            while (!targetCardElement.classList.contains('card')) {
+                targetCardElement = targetCardElement.parentElement;
+            }
+            const petObj = getPetObjByName(petsArray, targetCardElement.querySelector('p').innerHTML);
+            openPopupWindow(createPopupWindow(petObj));
+            break;
+        //clicking on cross-button or out of popup when it opened
+        case (['popup-window', 'popup-button', 'cross-image'].filter(className => event.target.classList.contains(className)).length > 0):
+            closePopupWindow();
+            break;
+    }
+}
+
+export const petsPageClickInteractive = function(event, petsArray) {
+    switch (true) {
+        //clicking on menu burger button
+        case (event.target.classList.contains('img-drop-button')):
+            openOrCloseMenu();
+            changeMenuButtonScin();
+            break;
+        //clicking anywhere else when burger menu opened
+        case (!event.target.classList.contains('img-drop-button') && document.querySelector('body').classList.contains('opened-menu')):
+            closeMenu();
+            break;
+        /*
+        //clicking on slider arrow-button
+        case (event.target.classList.contains('button-slider-arrow') || event.target.classList.contains('arrow-image')):
+            updateSliderRandom(petsArray);
+            break;
+        */
         //clicking on pet`s card
         case (event.target.classList.contains('open-popup')):
             let targetCardElement = event.target;
