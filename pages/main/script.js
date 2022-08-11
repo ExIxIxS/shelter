@@ -40,11 +40,6 @@ const getRandomPets = function(petsArray) {
     return nextPetsArray;
 }
 
-const updateSliderRandom = function(petsArray) {
-    const nextPetsArray = getRandomPets(petsArray);
-    fillMainPageWithContent(nextPetsArray);
-}
-
 const fillMainPageWithContent = function(petsArray) {
     const petsCardsElements = document.querySelectorAll('.card');
     let petsArrayIndex = 0;
@@ -56,6 +51,11 @@ const fillMainPageWithContent = function(petsArray) {
         petCardElement.querySelector('p').innerHTML = petObj.name;
         petsArrayIndex++;
     }
+}
+
+const updateSliderRandom = function(petsArray) {
+    const nextPetsArray = getRandomPets(petsArray);
+    fillMainPageWithContent(nextPetsArray);
 }
 
 const getPetObjByName = function(petsArray, petName) {

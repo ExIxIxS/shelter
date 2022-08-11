@@ -460,6 +460,7 @@ nav a:active {
     background: #FAFAFA;
     border-radius: 9px;
     display: flex;
+    overflow: hidden;
 }
 
 .popup-content:hover {
@@ -495,6 +496,7 @@ nav a:active {
     font-size: 15px;
     line-height: 110%;
     letter-spacing: 0.06em;
+    overflow:visible;
 }
 
 .popup-pet-properties li::marker {
@@ -517,7 +519,7 @@ nav a:active {
     width: 52px;
     height: 52px;
     position: fixed;
-    left: calc(50vw + 445px);
+    left: calc(50vw + (900px/2 - 10px));
     bottom: calc(50vh + 250px);
     border: 2px solid #F1CDB3;
     border-radius: 100px;
@@ -854,6 +856,36 @@ footer .container_centered {
         margin: 0 calc(12vw*100/768) 0 calc(20vw*100/768);
     }
 
+    .popup-text {
+        width: 260px;
+        height: 303px;
+        margin: 10px 9px 37px 11px;
+    }
+
+    .popup-content {
+        width: 630px;
+        height: 350px;
+    }
+
+    .popup-image {
+        width: 350px;
+        height: 350px;
+    }
+
+    .popup-text h5 {
+        margin: 20px 0;
+        font-size: 13px;
+    }
+
+    .popup-pet-properties {
+        height: 87px;
+    }
+
+    .popup-button {
+        left: calc(50vw + (630px/2 - 9px));
+        bottom: calc(50vh + 175px);
+    }
+
     #help-screen .container_centered {
         padding: calc(80vw*100/768) calc(70vw*100/768) calc(100vw*100/768) calc(70vw*100/768);
     }
@@ -1166,6 +1198,46 @@ footer .container_centered {
         position: absolute;
         top: 455px;
         right: 43px;
+    }
+
+    .popup-content {
+        width: 240px;
+        height: auto;
+        min-height: 321px;
+    }
+
+    .popup-text {
+        width: 220px;
+        height: auto;
+        min-height: 321px;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .popup-image {
+        display: none;
+    }
+
+    .popup-text h3 {
+        font-size: 35px;
+    }
+
+    .popup-text h5 {
+        margin: 20px 0;
+        font-size: 13px;
+        text-align: justify;
+    }
+
+    .popup-pet-properties {
+        height: auto;
+        min-height: 87px;
+        text-align: left;
+    }
+
+    .popup-button {
+
+        left: calc(50vw + (240px/2 - 22px));
+        bottom: calc(50vh + 170.5px);
     }
 
     #help-screen {
