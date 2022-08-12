@@ -315,13 +315,13 @@ nav a:active {
     border: 2px solid #CDCDCD;
     color: #CDCDCD;
 }
-.page-button:hover:not(:disabled, .page-button-number) {
+.page-button:hover:not(:disabled, .page-number) {
     cursor: pointer;
     background-color: #FDDCC4;
     border: 2px solid #FDDCC4;
 }
 
-.page-button-number {
+.page-number {
     font-size: 20px;
     background-color: #F1CDB3;
     border: 2px solid #F1CDB3;

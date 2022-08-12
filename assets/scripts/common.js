@@ -112,6 +112,21 @@ const closePopupWindow = function() {
     document.querySelector('body').classList.remove('opened-popup')
 }
 
+/*
+export const createRandomResponsiveDataSet = function(petsArray) {
+    const petsDataSet = [];
+    const petsDataSet8x6 = [];
+    const petsDataSet6x8 = [];
+    const petsDataSet3x16 = [];
+    for (let i = 1; i <= 8; i++) {
+        const workArray =  petsArray.map(item => item);
+        randomIndex = letgetRandomInt(workArray.length);
+
+    }
+
+}
+*/
+
 export const mainPageClickInteractive = function(event, petsArray) {
     switch (true) {
         //clicking on menu burger button
@@ -123,7 +138,7 @@ export const mainPageClickInteractive = function(event, petsArray) {
             closeMenu();
             break;
         //clicking on slider arrow-button
-        case (event.target.classList.contains('button-slider-arrow') || event.target.classList.contains('arrow-image')):
+        case (['button-slider-arrow', 'arrow-image'].filter(className => event.target.classList.contains(className)).length > 0):
             updateSliderRandom(petsArray);
             break;
         //clicking on pet`s card
@@ -154,9 +169,9 @@ export const petsPageClickInteractive = function(event, petsArray) {
             closeMenu();
             break;
         /*
-        //clicking on slider arrow-button
-        case (event.target.classList.contains('button-slider-arrow') || event.target.classList.contains('arrow-image')):
-            updateSliderRandom(petsArray);
+        //clicking on paginator`s buttons
+        case (['button-single', 'button-double'].filter(className => event.target.classList.contains(className)).length > 0):
+            //updatePetsContent();
             break;
         */
         //clicking on pet`s card
