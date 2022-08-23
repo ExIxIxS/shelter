@@ -51,21 +51,36 @@ const getRandomPets = function(petsArray) {
 }
 
 export const createRandomDataSet = function(petsArray, objAmountPerPage, pagesAmount) {
-    const petsDataSet = [];
-    for (let i = 1; i <= pagesAmount; i++) {
+    //generating Array from 48 petObj
+    const petsCommonDataSet = [];
+    for (let i = 1; i <= (48 / petsArray.length); i++) {
+
         const tempArray = [];
-        const pagePetsArray = [];
-        for (let index = 0; index < objAmountPerPage; index++) {
+        for (let index = 0; index < petsArray.length; index++) {
             tempArray.push(petsArray[index]);
         }
         while (tempArray.length > 0) {
             let randomIndex = getRandomInt(tempArray.length);
-            pagePetsArray.push(...tempArray.splice(randomIndex, 1));
+            petsCommonDataSet.push(...tempArray.splice(randomIndex, 1));
         }
-        petsDataSet.push(pagePetsArray)
     }
+    //creating DataSet
+    const petsDataSet = [];
+        for (let i = 1; i <= pagesAmount; i++) {
+            const pagePetsArray = [];
+            while (pagePetsArray.length !== objAmountPerPage) {
+                for (let index = 0; index < petsCommonDataSet.length; index++) {
+                    if (!pagePetsArray.includes(petsCommonDataSet[index])) {
+                        pagePetsArray.push(...petsCommonDataSet.splice(index, 1));
+                        break;
+                    }
+                }
+            }
+            petsDataSet.push(pagePetsArray);
+        }
     return petsDataSet;
 }
+
 
 export const getCurrentDataSet = function(arrayOfDataSets) {
     switch (true) {
