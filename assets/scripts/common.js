@@ -23,7 +23,6 @@ const closeMenu = function() {
 
 const changeMenuButtonScin = function() {
     const imageButtonElement = document.querySelector('.img-drop-button');
-    console.log(imageButtonElement.src);
     if (imageButtonElement.src.search(/drop_button-light.svg/) !== -1) {
         imageButtonElement.src = '../../assets/icons/drop_button-dark.svg';
     } else {
@@ -36,6 +35,7 @@ const getRandomInt = function(maxInt, minInt = 0) {
 }
 
 const getRandomPets = function(petsArray) {
+    //generate pets Array for main`s page slider
     const activePets = [];
     const petsCardsElements = document.querySelectorAll('.card');
     for (let petCardElement of petsCardsElements) {
@@ -48,6 +48,34 @@ const getRandomPets = function(petsArray) {
         nextPetsArray.push(...vailablePets.splice(randomIndex, 1));
     }
     return nextPetsArray;
+}
+
+export const createRandomDataSet = function(petsArray, objAmountPerPage, pagesAmount) {
+    const petsDataSet = [];
+    for (let i = 1; i <= pagesAmount; i++) {
+        const tempArray = [];
+        const pagePetsArray = [];
+        for (let index = 0; index < objAmountPerPage; index++) {
+            tempArray.push(petsArray[index]);
+        }
+        while (tempArray.length > 0) {
+            let randomIndex = getRandomInt(tempArray.length);
+            pagePetsArray.push(...tempArray.splice(randomIndex, 1));
+        }
+        petsDataSet.push(pagePetsArray)
+    }
+    return petsDataSet;
+}
+
+export const getCurrentDataSet = function(arrayOfDataSets) {
+    switch (true) {
+        case (window.innerWidth >= 1280):
+            return arrayOfDataSets[0];
+        case (window.innerWidth >= 768):
+            return arrayOfDataSets[1];
+        case (window.innerWidth <= 767):
+            return arrayOfDataSets[2];
+    }
 }
 
 const buttonDisablerSwitch  = function (currentPageNumber, lastPageNumber) {
@@ -99,6 +127,15 @@ export const fillMainPageWithContent = function(petsArray) {
     }
 }
 
+const updateSliderRandom = function(petsArray) {
+    const nextPetsArray = getRandomPets(petsArray);
+    fillMainPageWithContent(nextPetsArray);
+}
+
+const getPetObjByName = function(petsArray, petName) {
+    return petsArray.filter(item => item.name === petName)[0];
+}
+
 const createPetCardElement = function(petObj) {
     const cardElement = createCompleteElement('div', 'card open-popup');
     const graphicElement = createCompleteElement('div', 'graphic');
@@ -132,15 +169,6 @@ export const fillPetsPageWithContent = function(petsArray, pageNumber, lastPageN
     document.querySelector('main section .container_centered h3').after(createPetsContainerElement(petsArray));
     document.querySelector('.page-number').innerHTML = pageNumber;
     buttonDisablerSwitch(pageNumber, lastPageNumber)
-}
-
-const updateSliderRandom = function(petsArray) {
-    const nextPetsArray = getRandomPets(petsArray);
-    fillMainPageWithContent(nextPetsArray);
-}
-
-const getPetObjByName = function(petsArray, petName) {
-    return petsArray.filter(item => item.name === petName)[0];
 }
 
 const createPopupWindow = function(petObj) {
@@ -181,34 +209,6 @@ const openPopupWindow = function(popupWindowElement) {
 const closePopupWindow = function() {
     document.querySelector('.popup-window').remove();
     document.querySelector('body').classList.remove('opened-popup')
-}
-
-export const createRandomDataSet = function(petsArray, objAmountPerPage, pagesAmount) {
-    const petsDataSet = [];
-    for (let i = 1; i <= pagesAmount; i++) {
-        const tempArray = [];
-        const pagePetsArray = [];
-        for (let index = 0; index < objAmountPerPage; index++) {
-            tempArray.push(petsArray[index]);
-        }
-        while (tempArray.length > 0) {
-            let randomIndex = getRandomInt(tempArray.length);
-            pagePetsArray.push(...tempArray.splice(randomIndex, 1));
-        }
-        petsDataSet.push(pagePetsArray)
-    }
-    return petsDataSet;
-}
-
-export const getCurrentDataSet = function(arrayOfDataSets) {
-    switch (true) {
-        case (window.innerWidth >= 1280):
-            return arrayOfDataSets[0];
-        case (window.innerWidth >= 768):
-            return arrayOfDataSets[1];
-        case (window.innerWidth <= 767):
-            return arrayOfDataSets[2];
-    }
 }
 
 export const mainPageClickInteractive = function(event, petsArray) {
