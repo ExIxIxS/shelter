@@ -50,6 +50,42 @@ const getRandomPets = function(petsArray) {
     return nextPetsArray;
 }
 
+const buttonDisablerSwitch  = function (currentPageNumber, lastPageNumber) {
+    const leftButtonsCollection = document.querySelectorAll('.button-left');
+    const rightButtonsCollection = document.querySelectorAll('.button-right');
+    switch (currentPageNumber) {
+        case 1:
+            leftButtonsCollection.forEach(item => {
+                item.disabled = true;
+                item.dataset.disabled = true;
+            });
+            rightButtonsCollection.forEach(item => {
+                item.disabled = false;
+                item.dataset.disabled = false;
+            });
+            break;
+        case lastPageNumber:
+            leftButtonsCollection.forEach(item => {
+                item.disabled = false;
+                item.dataset.disabled = false;
+            });
+            rightButtonsCollection.forEach(item => {
+                item.disabled = true;
+                item.dataset.disabled = true;
+            });
+            break;
+        default:
+            leftButtonsCollection.forEach(item => {
+                item.disabled = false;
+                item.dataset.disabled = false;
+            });
+            rightButtonsCollection.forEach(item => {
+                item.disabled = false;
+                item.dataset.disabled = false;
+            });
+    }
+}
+
 export const fillMainPageWithContent = function(petsArray) {
     const petsCardsElements = document.querySelectorAll('.card');
     let petsArrayIndex = 0;
@@ -61,6 +97,41 @@ export const fillMainPageWithContent = function(petsArray) {
         petCardElement.querySelector('p').innerHTML = petObj.name;
         petsArrayIndex++;
     }
+}
+
+const createPetCardElement = function(petObj) {
+    const cardElement = createCompleteElement('div', 'card open-popup');
+    const graphicElement = createCompleteElement('div', 'graphic');
+    const imageElement = createCompleteElement('img', 'open-popup');
+    imageElement.src = petObj.img;
+    imageElement.alt = `${petObj.type} ${petObj.name}`;
+    imageElement.width = `270`;
+    imageElement.height = `270`;
+    const textElement = createCompleteElement('p', 'open-popup', petObj.name);
+    const buttonElement = createCompleteElement('div', 'button button-light button-card open-popup', 'Learn more');
+
+    graphicElement.append(imageElement);
+    cardElement.append(graphicElement, textElement, buttonElement);
+
+    return cardElement;
+}
+
+const createPetsContainerElement = function(petsArray) {
+    const PetsContainerElement = createCompleteElement('div', 'cards-container');
+    for (let petObj of petsArray) {
+        PetsContainerElement.append(createPetCardElement(petObj));
+    }
+    return PetsContainerElement;
+}
+
+export const fillPetsPageWithContent = function(petsArray, pageNumber, lastPageNumber) {
+    const cardContainerElement = document.querySelector('.cards-container');
+    if (cardContainerElement !== null) {
+        cardContainerElement.remove();
+    }
+    document.querySelector('main section .container_centered h3').after(createPetsContainerElement(petsArray));
+    document.querySelector('.page-number').innerHTML = pageNumber;
+    buttonDisablerSwitch(pageNumber, lastPageNumber)
 }
 
 const updateSliderRandom = function(petsArray) {
@@ -112,20 +183,33 @@ const closePopupWindow = function() {
     document.querySelector('body').classList.remove('opened-popup')
 }
 
-/*
-export const createRandomResponsiveDataSet = function(petsArray) {
+export const createRandomDataSet = function(petsArray, objAmountPerPage, pagesAmount) {
     const petsDataSet = [];
-    const petsDataSet8x6 = [];
-    const petsDataSet6x8 = [];
-    const petsDataSet3x16 = [];
-    for (let i = 1; i <= 8; i++) {
-        const workArray =  petsArray.map(item => item);
-        randomIndex = letgetRandomInt(workArray.length);
-
+    for (let i = 1; i <= pagesAmount; i++) {
+        const tempArray = [];
+        const pagePetsArray = [];
+        for (let index = 0; index < objAmountPerPage; index++) {
+            tempArray.push(petsArray[index]);
+        }
+        while (tempArray.length > 0) {
+            let randomIndex = getRandomInt(tempArray.length);
+            pagePetsArray.push(...tempArray.splice(randomIndex, 1));
+        }
+        petsDataSet.push(pagePetsArray)
     }
-
+    return petsDataSet;
 }
-*/
+
+export const getCurrentDataSet = function(arrayOfDataSets) {
+    switch (true) {
+        case (window.innerWidth >= 1280):
+            return arrayOfDataSets[0];
+        case (window.innerWidth >= 768):
+            return arrayOfDataSets[1];
+        case (window.innerWidth <= 767):
+            return arrayOfDataSets[2];
+    }
+}
 
 export const mainPageClickInteractive = function(event, petsArray) {
     switch (true) {
@@ -157,7 +241,7 @@ export const mainPageClickInteractive = function(event, petsArray) {
     }
 }
 
-export const petsPageClickInteractive = function(event, petsArray) {
+export const petsPageClickInteractive = function(event, petsArray, petsDataSet) {
     switch (true) {
         //clicking on menu burger button
         case (event.target.classList.contains('img-drop-button')):
@@ -168,12 +252,35 @@ export const petsPageClickInteractive = function(event, petsArray) {
         case (!event.target.classList.contains('img-drop-button') && document.querySelector('body').classList.contains('opened-menu')):
             closeMenu();
             break;
-        /*
         //clicking on paginator`s buttons
         case (['button-single', 'button-double'].filter(className => event.target.classList.contains(className)).length > 0):
-            //updatePetsContent();
+            const pageNumberElement = document.querySelector('.page-number');
+            let currentPageNumber = Number(pageNumberElement.innerHTML);
+            switch (true) {
+                //clicking on left single button
+                case (['button-left', 'button-single'].filter(className => event.target.classList.contains(className)).length === 2):
+                    if (currentPageNumber !== 1) {
+                        currentPageNumber--;
+                    }
+                    break;
+                //clicking on right single button
+                case (['button-right', 'button-single'].filter(className => event.target.classList.contains(className)).length === 2):
+                    if (currentPageNumber !== petsDataSet.length) {
+                        currentPageNumber++;
+                    }
+                    break;
+                //clicking on left double button
+                case (['button-left', 'button-double'].filter(className => event.target.classList.contains(className)).length === 2):
+                        currentPageNumber = 1;
+                    break;
+                //clicking on right double button
+                case (['button-right', 'button-double'].filter(className => event.target.classList.contains(className)).length === 2):
+                        currentPageNumber = petsDataSet.length;
+                    break;
+            }
+            pageNumberElement.innerHTML = currentPageNumber;
+            fillPetsPageWithContent(petsDataSet[currentPageNumber - 1], currentPageNumber, petsDataSet.length);
             break;
-        */
         //clicking on pet`s card
         case (event.target.classList.contains('open-popup')):
             let targetCardElement = event.target;
