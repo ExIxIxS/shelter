@@ -1,7 +1,8 @@
 import {petsPageClickInteractive,
         createRandomDataSet,
         getCurrentDataSet,
-        fillPetsPageWithContent
+        fillPetsPageWithContent,
+        updateResizedPetsPage
 } from '../../assets/scripts/common.js';
 
 fetch('../../assets/json/pets.json') //path to the file with json data
@@ -9,17 +10,11 @@ fetch('../../assets/json/pets.json') //path to the file with json data
             return response.json();
         })
         .then(petsArray => {
-            const petsDataSet8x6 = createRandomDataSet(petsArray, 8, 6);
-            const petsDataSet6x8 = createRandomDataSet(petsArray, 6, 8);
-            const petsDataSet3x16 = createRandomDataSet(petsArray, 3, 16);
+            const responsivePetsDataSetArray = [createRandomDataSet(petsArray, 8, 6), createRandomDataSet(petsArray, 6, 8), createRandomDataSet(petsArray, 3, 16)];
             const startPageNumber = 1;
-            let currentDataSet = getCurrentDataSet([petsDataSet8x6, petsDataSet6x8, petsDataSet3x16]);
-
-            //delete before release
-            console.log(window.innerWidth);
+            const currentDataSet = getCurrentDataSet(responsivePetsDataSetArray);
 
             fillPetsPageWithContent(currentDataSet[0], startPageNumber, currentDataSet.length);
-            document.querySelector('body').addEventListener('click', event => petsPageClickInteractive (event, petsArray, currentDataSet));
-            //window.addEventListener('resize', event => fillPetsPageWithContent(petsRandomDataSet));
-
+            document.querySelector('body').addEventListener('click', event => petsPageClickInteractive(event, petsArray, responsivePetsDataSetArray));
+            window.addEventListener('resize', event => updateResizedPetsPage(responsivePetsDataSetArray));
         });

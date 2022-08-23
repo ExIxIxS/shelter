@@ -241,7 +241,8 @@ export const mainPageClickInteractive = function(event, petsArray) {
     }
 }
 
-export const petsPageClickInteractive = function(event, petsArray, petsDataSet) {
+export const petsPageClickInteractive = function(event, petsArray, responsivePetsDataSetArray) {
+    const currentDataSet = getCurrentDataSet(responsivePetsDataSetArray);
     switch (true) {
         //clicking on menu burger button
         case (event.target.classList.contains('img-drop-button')):
@@ -265,7 +266,7 @@ export const petsPageClickInteractive = function(event, petsArray, petsDataSet) 
                     break;
                 //clicking on right single button
                 case (['button-right', 'button-single'].filter(className => event.target.classList.contains(className)).length === 2):
-                    if (currentPageNumber !== petsDataSet.length) {
+                    if (currentPageNumber !== currentDataSet.length) {
                         currentPageNumber++;
                     }
                     break;
@@ -275,11 +276,11 @@ export const petsPageClickInteractive = function(event, petsArray, petsDataSet) 
                     break;
                 //clicking on right double button
                 case (['button-right', 'button-double'].filter(className => event.target.classList.contains(className)).length === 2):
-                        currentPageNumber = petsDataSet.length;
+                        currentPageNumber = currentDataSet.length;
                     break;
             }
             pageNumberElement.innerHTML = currentPageNumber;
-            fillPetsPageWithContent(petsDataSet[currentPageNumber - 1], currentPageNumber, petsDataSet.length);
+            fillPetsPageWithContent(currentDataSet[currentPageNumber - 1], currentPageNumber, currentDataSet.length);
             break;
         //clicking on pet`s card
         case (event.target.classList.contains('open-popup')):
@@ -295,4 +296,11 @@ export const petsPageClickInteractive = function(event, petsArray, petsDataSet) 
             closePopupWindow();
             break;
     }
+}
+
+export const updateResizedPetsPage = function(responsivePetsDataSetArray) {
+    const currentDataSet = getCurrentDataSet(responsivePetsDataSetArray);
+    let currentPageNumber = Number(document.querySelector('.page-number').innerHTML);
+    currentPageNumber = (currentPageNumber > currentDataSet.length) ? currentDataSet.length : currentPageNumber;
+    fillPetsPageWithContent(currentDataSet[currentPageNumber-1], currentPageNumber, currentDataSet.length)
 }
