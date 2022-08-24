@@ -44,6 +44,10 @@ body {
     flex-direction: column;
 }
 
+body.opened-popup {
+    overflow-y: hidden;
+}
+
 .container_centered {
     width: 1280px;
     margin: 0 auto;
@@ -84,16 +88,21 @@ header {
     justify-content: space-between;
 }
 
-#logo {
+#logo, #logo-menu {
     width: 184px;
     height: 60px;
 }
 
 #logo-menu {
-    display: none;
+    visibility: hidden;
+    position: fixed;
+    top: 30px;
+    right: -184px;
+    z-index: 10;
+    transition: all 0.5s ease-out;
 }
 
-h1 {
+h1, #logo-menu h2 {
     width: 190px;
     height: 35px;
     margin: 0;
@@ -146,7 +155,7 @@ h4 {
     border-color: #00000000;
 }
 
-#logo h2 {
+#logo h2, #logo-menu h3 {
     width: 179px;
     height: 15px;
     font-family: 'Source Sans Pro', sans-serif;
@@ -162,6 +171,7 @@ h4 {
     width: 30px;
     height: 22px;
     display: none;
+    z-index: 10;
 }
 
 nav {
@@ -370,7 +380,6 @@ nav a:active {
 }
 
 .card p {
-    width: 74px;
     height: 23px;
     margin: 30px auto;
     font-family: 'Old Standard TT', serif;
@@ -419,7 +428,114 @@ nav a:active {
     text-decoration: none;
 }
 
+.popup-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(41, 41, 41, 0.6);
+    z-index: 8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.popup-window:hover {
+    cursor: pointer;
+}
+
+.popup-window *:hover {
+    cursor:auto;
+}
+
+.popup-window .popup-button:hover, .popup-window .popup-button img:hover {
+    cursor: pointer;
+}
+
+.popup-content {
+    width: 900px;
+    height: 500px;
+    background: #FAFAFA;
+    border-radius: 9px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    z-index: 9;
+    overflow: visible;
+}
+
+.popup-content:hover {
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+
+.popup-image {
+    width: 500px;
+    height: 500px;
+    border-radius: 9px 0px 0px 9px;
+}
+
+.popup-image img {
+    border-radius: inherit;
+}
+
+.popup-text {
+    width: 351px;
+    height: 362px;
+    margin: 50px 20px 88px 29px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.popup-pet-properties {
+    height: 102px;
+    display: flex;
+    padding-left: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style: outside;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+    overflow:visible;
+}
+
+.popup-pet-properties li::marker {
+    color: #F1CDB3;
+    font-size: 10px;
+  }
+
+.popup-text h3 {
+    margin-bottom: 10px;
+}
+
+.popup-text h5 {
+    margin: 40px 0;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+}
+
+.popup-button {
+    width: 52px;
+    height: 52px;
+    position: absolute;
+    left: 890px;
+    top: -52px;
+    z-index: 10;
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    visibility: visible;
+}
+
+.popup-button img {
+    width: 12px;
+}
 
 #help-screen {
     min-height: 611px;
@@ -744,6 +860,36 @@ footer .container_centered {
         margin: 0 calc(12vw*100/768) 0 calc(20vw*100/768);
     }
 
+    .popup-text {
+        width: 260px;
+        height: 303px;
+        margin: 10px 9px 37px 11px;
+    }
+
+    .popup-content {
+        width: 630px;
+        height: 350px;
+    }
+
+    .popup-image {
+        width: 350px;
+        height: 350px;
+    }
+
+    .popup-text h5 {
+        margin: 20px 0;
+        font-size: 13px;
+    }
+
+    .popup-pet-properties {
+        height: 87px;
+    }
+
+    .popup-button {
+        left: 621px;
+        top: -52px;
+    }
+
     #help-screen .container_centered {
         padding: calc(80vw*100/768) calc(70vw*100/768) calc(100vw*100/768) calc(70vw*100/768);
     }
@@ -828,6 +974,10 @@ footer .container_centered {
 
 @media (max-width: 767px) {
 
+    body.opened-menu {
+        overflow-y: hidden;
+    }
+
     .container_centered {
         width: 100%;
         height: 100%;
@@ -838,12 +988,64 @@ footer .container_centered {
         font-size: calc(25vw*100/320);
     }
 
+    #logo-menu.opened-menu {
+        visibility: visible;
+        right: 126px;
+    }
+
     nav {
-        display: none;
+        width: 320px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #292929;
+        position: fixed;
+        top:0;
+        right: -320px;
+        transition: all 0.5s ease-out;
+        visibility: hidden;
+        z-index: 9;
+    }
+
+    nav.opened-menu {
+        visibility:visible;
+        right: 0;
+    }
+
+    nav::before {
+        content: '';
+        width: calc(100vw - 320px);
+        height: 100%;
+        position: fixed;
+        top:0;
+        left:0;
+        background: rgba(41, 41, 41, 0);
+        transition: all 0.5s ease-in;
+    }
+
+    nav.opened-menu::before {
+        background: rgba(41, 41, 41, 0.6);
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 243px;
+        height: 327px;
+    }
+
+    header a {
+        font-size: 32px;
+        line-height: 160%;
     }
 
     .drop-button {
         display: block;
+        transition-duration: 0.5s;
+    }
+
+    .drop-button.opened-menu {
+        transform: rotate(90deg);
     }
 
     section, footer {
@@ -1000,6 +1202,45 @@ footer .container_centered {
         position: absolute;
         top: 455px;
         right: 43px;
+    }
+
+    .popup-content {
+        width: 240px;
+        height: auto;
+        min-height: 321px;
+    }
+
+    .popup-text {
+        width: 220px;
+        height: auto;
+        min-height: 321px;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .popup-image {
+        display: none;
+    }
+
+    .popup-text h3 {
+        font-size: 35px;
+    }
+
+    .popup-text h5 {
+        margin: 20px 0;
+        font-size: 13px;
+        text-align: justify;
+    }
+
+    .popup-pet-properties {
+        height: auto;
+        min-height: 87px;
+        text-align: left;
+    }
+
+    .popup-button {
+        left: 218px;
+        top: -52px;
     }
 
     #help-screen {
@@ -1216,5 +1457,10 @@ footer .container_centered {
 
     .block-footer-item {
         margin-top: calc(40vw*100/320);
+    }
+
+    .popup-button {
+        left: auto;
+        right: 0;
     }
 }

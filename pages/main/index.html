@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shelter</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../../assets/styles/reset.css">
     <link rel="stylesheet" type="text/css" href="../../assets/styles/normalize.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -13,16 +14,16 @@
     <section id="start-screen" class="dark-section">
         <div class="container_centered">
             <header>
-                <a id="logo" href="">
-                    <h1 id="logo-title">Cozy House</h1>
-                    <h2 id="logo-subtitle">Shelter for pets in Boston</h2>
+                <a id="logo" href="#start-screen">
+                    <h1 class="logo-title">Cozy House</h1>
+                    <h2 class="logo-subtitle">Shelter for pets in Boston</h2>
                 </a>
                 <div class="graphic drop-button">
-                    <img src="../../assets/icons/drop_button-dark.svg" alt="menu button" width="30" height="22">
+                    <img src="../../assets/icons/drop_button-dark.svg" class="img-drop-button" alt="menu button" width="30" height="30">
                 </div>
                 <a id="logo-menu" href="#start-screen">
-                    <h2 id="logo-title">Cozy House</h1>
-                    <h3 id="logo-subtitle">Shelter for pets in Boston</h2>
+                    <h2 class="logo-title">Cozy House</h2>
+                    <h3 class="logo-subtitle">Shelter for pets in Boston</h3>
                 </a>
                 <nav>
                     <ul>
@@ -69,34 +70,13 @@
                 <h3>Our friends who are looking for a house</h3>
                 <div id="slider">
                     <div id="button-left" class="button button-light button-slider-arrow">
-                            <img src="../../assets/icons/arrow.png" alt="Arrow" width="14" height="6">
-                    </div>
-                    <div id="katrine" class="card left-card">
-                        <div class="graphic">
-                            <img src="../../assets/images/pets-katrine.png" alt="Cat Katrine" width="270" height="270">
-                        </div>
-                        <p>Katrine</p>
-                        <a class="button button-light button-card" href="javascript:;">Learn more</a>
-                    </div>
-                    <div id="jennifer" class="card central-card">
-                        <div class="graphic">
-                            <img src="../../assets/images/pets-jennifer.png" alt="Puppy Jennifer" width="270" height="270">
-                        </div>
-                        <p>Jennifer</p>
-                        <a class="button button-light button-card" href="javascript:;">Learn more</a>
-                    </div>
-                    <div id="woody" class="card right-card">
-                        <div class="graphic">
-                            <img src="../../assets/images/pets-woody.png" alt="Dog Woody" width="270" height="270">
-                        </div>
-                        <p>Woody</p>
-                        <a class="button button-light button-card" href="javascript:;">Learn more</a>
+                            <img class="arrow-image" src="../../assets/icons/arrow.png" alt="Arrow" width="14" height="6">
                     </div>
                     <div id="button-right" class="button button-light button-slider-arrow">
-                        <img src="../../assets/icons/arrow.png" alt="Arrow" width="14" height="6">
+                        <img class="arrow-image" src="../../assets/icons/arrow.png" alt="Arrow" width="14" height="6">
                     </div>
                 </div>
-                <a id="button-get-know" class="button button-dark" href="../pets/index.html" target="_blank">Get to know the rest</a>
+                <a id="button-get-know" class="button button-dark" href="../pets/index.html">Get to know the rest</a>
             </div>
         </section>
         <section id="help-screen" class="white-section">
@@ -198,5 +178,6 @@
             </div>
         </div>
     </footer>
+    <script src="script.js" type="module"></script>
 </body>
 </html>

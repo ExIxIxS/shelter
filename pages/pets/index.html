@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our pets</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../../assets/styles/reset.css">
     <link rel="stylesheet" type="text/css" href="../../assets/styles/normalize.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -14,15 +15,15 @@
         <div class="container_centered">
             <header>
                 <a id="logo" href="../main/index.html">
-                    <h1 id="logo-title">Cozy House</h1>
-                    <h2 id="logo-subtitle">Shelter for pets in Boston</h2>
+                    <h1 class="logo-title">Cozy House</h1>
+                    <h2 class="logo-subtitle">Shelter for pets in Boston</h2>
                 </a>
                 <div class="graphic drop-button">
-                    <img src="../../assets/icons/drop_button-light.svg" alt="menu button" width="30" height="22">
+                    <img src="../../assets/icons/drop_button-light.svg" class="img-drop-button" alt="menu button" width="30" height="22">
                 </div>
-                <a id="logo-menu" href="#start-screen">
-                    <h2 id="logo-title">Cozy House</h1>
-                    <h3 id="logo-subtitle">Shelter for pets in Boston</h2>
+                <a id="logo-menu" href="../main/index.html">
+                    <h2 class="logo-title">Cozy House</h2>
+                    <h3 class="logo-subtitle">Shelter for pets in Boston</h3>
                 </a>
                 <nav>
                     <ul>
@@ -39,70 +40,12 @@
         <section id="pets-screen" class="gray-section">
             <div class="container_centered">
                 <h3>Our friends who are looking for a house</h3>
-                <div id="cards-container">
-                    <div id="katrine" class="card">
-                        <div class="graphic">
-                            <img src="../../assets/images/pets-katrine.png" alt="Cat Katrine" width="270" height="270">
-                        </div>
-                        <p>Katrine</p>
-                        <a class="button button-light button-card" href="javascript:;">Learn more</a>
-                    </div>
-                    <div id="jennifer" class="card">
-                        <div class="graphic">
-                            <img src="../../assets/images/pets-jennifer.png" alt="Puppy Jennifer" width="270" height="270">
-                        </div>
-                        <p>Jennifer</p>
-                        <a class="button button-light button-card" href="javascript:;">Learn more</a>
-                    </div>
-                    <div id="woody" class="card">
-                        <div class="graphic">
-                            <img src="../../assets/images/pets-woody.png" alt="Dog Woody" width="270" height="270">
-                        </div>
-                        <p>Woody</p>
-                        <a class="button button-light button-card" href="javascript:;">Learn more</a>
-                    </div>
-                    <div id="sophia" class="card responsive-320-hidden">
-                        <div class="graphic">
-                            <img src="../../assets/images/pets-sophia.png" alt="Dog Sophia" width="270" height="270">
-                        </div>
-                        <p>Sophia</p>
-                        <a class="button button-light button-card" href="javascript:;">Learn more</a>
-                    </div>
-                    <div id="timmy" class="card responsive-320-hidden">
-                        <div class="graphic">
-                            <img src="../../assets/images/pets-timmy.png" alt="Cat Timmy" width="270" height="270">
-                        </div>
-                        <p>Timmy</p>
-                        <a class="button button-light button-card" href="javascript:;">Learn more</a>
-                    </div>
-                    <div id="charly" class="card responsive-320-hidden">
-                        <div class="graphic">
-                            <img src="../../assets/images/pets-charly.png" alt="Dog Charly" width="270" height="270">
-                        </div>
-                        <p>Charly</p>
-                        <a class="button button-light button-card" href="javascript:;">Learn more</a>
-                    </div>
-                    <div id="scarlet" class="card responsive-768-hidden">
-                        <div class="graphic">
-                            <img src="../../assets/images/pets-scarlet.png" alt="Dog Scarlet" width="270" height="270">
-                        </div>
-                        <p>Scarlet</p>
-                        <a class="button button-light button-card" href="javascript:;">Learn more</a>
-                    </div>
-                    <div id="freddie" class="card responsive-768-hidden">
-                        <div class="graphic">
-                            <img src="../../assets/images/pets-freddie.png" alt="Cat Freddie" width="270" height="270">
-                        </div>
-                        <p>Freddie</p>
-                        <a class="button button-light button-card" href="javascript:;">Learn more</a>
-                    </div>
-                </div>
                 <div id="pagination-container">
-                    <button disabled data-disabled id="button-double-left" class="page-button">&lt;&lt;</button>
-                    <button disabled data-disabled id="button-single-left" class="page-button">&lt;</button>
-                    <button class="page-button page-button-number">1</button>
-                    <button id="button-single-right" class="page-button">&gt;</button>
-                    <button id="button-double-right" class="page-button">&gt;&gt;</button>
+                    <button class="page-button button-double button-left">&lt;&lt;</button>
+                    <button class="page-button button-single button-left">&lt;</button>
+                    <button class="page-button page-number">1</button>
+                    <button class="page-button button-single button-right">&gt;</button>
+                    <button class="page-button button-double button-right">&gt;&gt;</button>
                 </div>
             </div>
         </section>
@@ -142,5 +85,6 @@
             </div>
         </div>
     </footer>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
