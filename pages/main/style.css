@@ -432,8 +432,8 @@ nav a:active {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: rgba(41, 41, 41, 0.6);
     z-index: 8;
     display: flex;
@@ -460,6 +460,9 @@ nav a:active {
     border-radius: 9px;
     display: flex;
     overflow: hidden;
+    position: relative;
+    z-index: 9;
+    overflow: visible;
 }
 
 .popup-content:hover {
@@ -517,15 +520,17 @@ nav a:active {
 .popup-button {
     width: 52px;
     height: 52px;
-    position: fixed;
-    left: calc(50vw + (900px/2 - 10px));
-    bottom: calc(50vh + 250px);
+    position: absolute;
+    left: 890px;
+    top: -52px;
+    z-index: 10;
     border: 2px solid #F1CDB3;
     border-radius: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    visibility: visible;
 }
 
 .popup-button img {
@@ -881,8 +886,8 @@ footer .container_centered {
     }
 
     .popup-button {
-        left: calc(50vw + (630px/2 - 9px));
-        bottom: calc(50vh + 175px);
+        left: 621px;
+        top: -52px;
     }
 
     #help-screen .container_centered {
@@ -1234,9 +1239,8 @@ footer .container_centered {
     }
 
     .popup-button {
-
-        left: calc(50vw + (240px/2 - 22px));
-        bottom: calc(50vh + 341px/2);
+        left: 218px;
+        top: -52px;
     }
 
     #help-screen {
@@ -1453,5 +1457,10 @@ footer .container_centered {
 
     .block-footer-item {
         margin-top: calc(40vw*100/320);
+    }
+
+    .popup-button {
+        left: auto;
+        right: 0;
     }
 }

@@ -210,11 +210,35 @@ const createPopupWindow = function(petObj) {
     popupPetPropElement.append(popupPetAgeElement, popupPetInoculationsElement, popupPetDiseasesElement, popupPetParasitesElement);
     popupTextElement.append(popupPetNameElement, popupPetTypeElement, popupPetDescrElement, popupPetPropElement);
     popupDivImageElement.append(popupImageElement);
-    popupContentElement.append(popupDivImageElement, popupTextElement);
-    popupWindowElement.append(popupContentElement, popupButtonElement);
+    popupContentElement.append(popupDivImageElement, popupTextElement, popupButtonElement);
+    popupWindowElement.append(popupContentElement);
 
     return popupWindowElement;
 }
+
+/*
+        <div class="popup-window">
+            <div class="popup-content">
+                <div class="popup-image">
+                    <img src="../../assets/images/charly.png" alt="Dog Charly" width="500" height="500">
+                </div>
+                <div class="popup-text">
+                    <h3 class="popup-pet-name">Charly</h3>
+                    <h4 class="popup-pet-type">Dog - Jack Russell Terrier</h4>
+                    <h5 class="popup-pet-description">This cute boy, Charly, is three years old and he likes adults and kids. He isn’t fond of many other dogs, so he might do best in a single dog home. Charly has lots of energy, and loves to run and play. We think a fenced yard would make him very happy.</h5>
+                    <ul class="popup-pet-properties">
+                        <li class="popup-pet-age"><strong>Age:</strong> 8 years</li>
+                        <li class="popup-pet-inoculations"><strong>Inoculations:</strong> bordetella bronchiseptica, leptospirosis</li>
+                        <li class="popup-pet-diseases"><strong>Diseases:</strong> deafness, blindness</li>
+                        <li class="popup-pet-parasites"><strong>Parasites:</strong> lice, fleas</li>
+                    </ul>
+                </div>
+            <div class="button button-light popup-button">
+                <img class="cross-image" src="../../assets/icons/button-cross.svg" alt="cross" width="12" height="12">
+            </div>
+            </div>
+        </div>
+*/
 
 const openPopupWindow = function(popupWindowElement) {
     document.querySelector('main').prepend(popupWindowElement);
