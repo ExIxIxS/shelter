@@ -54,7 +54,6 @@ export const createRandomDataSet = function(petsArray, objAmountPerPage, pagesAm
     //generating Array from 48 petObj
     const petsCommonDataSet = [];
     for (let i = 1; i <= (48 / petsArray.length); i++) {
-
         const tempArray = [];
         for (let index = 0; index < petsArray.length; index++) {
             tempArray.push(petsArray[index]);
@@ -80,7 +79,6 @@ export const createRandomDataSet = function(petsArray, objAmountPerPage, pagesAm
         }
     return petsDataSet;
 }
-
 
 export const getCurrentDataSet = function(arrayOfDataSets) {
     switch (true) {
@@ -129,22 +127,9 @@ const buttonDisablerSwitch  = function (currentPageNumber, lastPageNumber) {
     }
 }
 
-export const fillMainPageWithContent = function(petsArray) {
-    const petsCardsElements = document.querySelectorAll('.card');
-    let petsArrayIndex = 0;
-    for (let petCardElement of petsCardsElements) {
-        const petObj = petsArray[petsArrayIndex];
-        const petCardImgElement = petCardElement.querySelector('img');
-        petCardImgElement.src = petObj.img;
-        petCardImgElement.alt = `${petObj.type} ${petObj.name}`;
-        petCardElement.querySelector('p').innerHTML = petObj.name;
-        petsArrayIndex++;
-    }
-}
-
 const updateSliderRandom = function(petsArray) {
     const nextPetsArray = getRandomPets(petsArray);
-    fillMainPageWithContent(nextPetsArray);
+    updateMainPageWithContent(nextPetsArray);
 }
 
 const getPetObjByName = function(petsArray, petName) {
@@ -174,6 +159,31 @@ const createPetsContainerElement = function(petsArray) {
         PetsContainerElement.append(createPetCardElement(petObj));
     }
     return PetsContainerElement;
+}
+
+export const addMainPageContent = function(petsArray) {
+    const cardElements = [];
+    const additionalClasses = ['right-card', 'central-card', 'left-card'];
+     //3-cards grid
+    for (let index = 0; index < 3; index++) {
+        const PetCardElement = createPetCardElement(petsArray[index]);
+        PetCardElement.classList.add(additionalClasses.pop());
+        cardElements.push(PetCardElement);
+    }
+    document.querySelector('#button-left').after(...cardElements);
+}
+
+const updateMainPageWithContent = function(petsArray) {
+    const petsCardsElements = document.querySelectorAll('.card');
+    let petsArrayIndex = 0;
+    for (let petCardElement of petsCardsElements) {
+        const petObj = petsArray[petsArrayIndex];
+        const petCardImgElement = petCardElement.querySelector('img');
+        petCardImgElement.src = petObj.img;
+        petCardImgElement.alt = `${petObj.type} ${petObj.name}`;
+        petCardElement.querySelector('p').innerHTML = petObj.name;
+        petsArrayIndex++;
+    }
 }
 
 export const fillPetsPageWithContent = function(petsArray, pageNumber, lastPageNumber) {
@@ -215,30 +225,6 @@ const createPopupWindow = function(petObj) {
 
     return popupWindowElement;
 }
-
-/*
-        <div class="popup-window">
-            <div class="popup-content">
-                <div class="popup-image">
-                    <img src="../../assets/images/charly.png" alt="Dog Charly" width="500" height="500">
-                </div>
-                <div class="popup-text">
-                    <h3 class="popup-pet-name">Charly</h3>
-                    <h4 class="popup-pet-type">Dog - Jack Russell Terrier</h4>
-                    <h5 class="popup-pet-description">This cute boy, Charly, is three years old and he likes adults and kids. He isn’t fond of many other dogs, so he might do best in a single dog home. Charly has lots of energy, and loves to run and play. We think a fenced yard would make him very happy.</h5>
-                    <ul class="popup-pet-properties">
-                        <li class="popup-pet-age"><strong>Age:</strong> 8 years</li>
-                        <li class="popup-pet-inoculations"><strong>Inoculations:</strong> bordetella bronchiseptica, leptospirosis</li>
-                        <li class="popup-pet-diseases"><strong>Diseases:</strong> deafness, blindness</li>
-                        <li class="popup-pet-parasites"><strong>Parasites:</strong> lice, fleas</li>
-                    </ul>
-                </div>
-            <div class="button button-light popup-button">
-                <img class="cross-image" src="../../assets/icons/button-cross.svg" alt="cross" width="12" height="12">
-            </div>
-            </div>
-        </div>
-*/
 
 const openPopupWindow = function(popupWindowElement) {
     document.querySelector('main').prepend(popupWindowElement);

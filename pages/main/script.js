@@ -1,5 +1,5 @@
-import {fillMainPageWithContent,
-    mainPageClickInteractive
+import {addMainPageContent,
+        mainPageClickInteractive
 } from '../../assets/scripts/common.js';
 
 fetch('../../assets/json/pets.json') //path to the file with json data
@@ -7,6 +7,6 @@ fetch('../../assets/json/pets.json') //path to the file with json data
             return response.json();
         })
         .then(petsArray => {
-            fillMainPageWithContent(petsArray);
+            addMainPageContent(petsArray);
             document.querySelector('body').addEventListener('click', event => mainPageClickInteractive(event, petsArray));
         });
