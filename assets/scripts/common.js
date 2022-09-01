@@ -132,6 +132,20 @@ const updateSliderRandom = function(petsArray) {
     updateMainPageWithContent(nextPetsArray);
 }
 
+const animateSlider = function(sideName) {
+    const petsCardsElements = document.querySelectorAll('.card');
+    const animatedClassName = 'card-animated-' + sideName;
+    for (let petCardElement of petsCardsElements) {
+        petCardElement.classList.add(animatedClassName);
+    }
+    setTimeout(() => {
+        for (let petCardElement of petsCardsElements) {
+            petCardElement.classList.remove(animatedClassName);
+        }
+    }, 500);
+
+}
+
 const getPetObjByName = function(petsArray, petName) {
     return petsArray.filter(item => item.name === petName)[0];
 }
@@ -164,13 +178,13 @@ const createPetsContainerElement = function(petsArray) {
 export const addMainPageContent = function(petsArray) {
     const cardElements = [];
     const additionalClasses = ['right-card', 'central-card', 'left-card'];
-     //3-cards grid
+    //3-cards grid
     for (let index = 0; index < 3; index++) {
         const PetCardElement = createPetCardElement(petsArray[index]);
         PetCardElement.classList.add(additionalClasses.pop());
         cardElements.push(PetCardElement);
     }
-    document.querySelector('#button-left').after(...cardElements);
+    document.querySelector('.slider-card-frame').append(...cardElements);
 }
 
 const updateMainPageWithContent = function(petsArray) {
@@ -248,7 +262,12 @@ export const mainPageClickInteractive = function(event, petsArray) {
             break;
         //clicking on slider arrow-button
         case (['button-slider-arrow', 'arrow-image'].filter(className => event.target.classList.contains(className)).length > 0):
-            updateSliderRandom(petsArray);
+            if (event.target.classList.contains('right')) {
+                animateSlider('left');
+            } else {
+                animateSlider('right');
+            }
+            setTimeout(() => updateSliderRandom(petsArray), 250);
             break;
         //clicking on pet`s card
         case (event.target.classList.contains('open-popup')):
@@ -277,6 +296,7 @@ export const petsPageClickInteractive = function(event, petsArray, responsivePet
         //clicking anywhere else when burger menu opened
         case (!event.target.classList.contains('img-drop-button') && document.querySelector('body').classList.contains('opened-menu')):
             closeMenu();
+            changeMenuButtonScin();
             break;
         //clicking on paginator`s buttons
         case (['button-single', 'button-double'].filter(className => event.target.classList.contains(className)).length > 0):
