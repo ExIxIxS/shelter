@@ -1,16 +1,22 @@
-import {petsPageClickInteractive,
-        createRandomDataSet,
+import {createRandomDataSet,
         getCurrentDataSet,
-        fillPetsPageWithContent,
-        updateResizedPetsPage
+        fillPetsPageWithContent
 } from '../../assets/scripts/common.js';
+
+import {petsPageClickInteractive,
+        updateResizedPetsPage
+} from '../../assets/scripts/userActions.js';
 
 fetch('../../assets/json/pets.json') //path to the file with json data
         .then(response => {
             return response.json();
         })
         .then(petsArray => {
-            const responsivePetsDataSetArray = [createRandomDataSet(petsArray, 8, 6), createRandomDataSet(petsArray, 6, 8), createRandomDataSet(petsArray, 3, 16)];
+            const responsivePetsDataSetArray = [
+                createRandomDataSet(petsArray, 8, 6),
+                createRandomDataSet(petsArray, 6, 8),
+                createRandomDataSet(petsArray, 3, 16)
+            ];
             const startPageNumber = 1;
             const currentDataSet = getCurrentDataSet(responsivePetsDataSetArray);
 
