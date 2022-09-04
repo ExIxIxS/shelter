@@ -1,41 +1,19 @@
-const createCompleteElement = function(type, className = '', innerHTML = '',) {
+const createCompleteElement = function(type, className, innerHTML) {
     const element = document.createElement(type);
-    if (className !== '')
-        {element.className = className};
-    if (innerHTML !== '')
-        {element.innerHTML = innerHTML};
+    element.className = (className) ? className : '';
+    element.innerHTML = (innerHTML) ? innerHTML : '';
     return element;
-}
-
-const openOrCloseMenu = function() {
-    document.querySelector('body').classList.toggle('opened-menu');
-    document.querySelector('#logo-menu').classList.toggle('opened-menu');
-    document.querySelector('nav').classList.toggle('opened-menu');
-    document.querySelector('.drop-button').classList.toggle('opened-menu');
-}
-
-const closeMenu = function() {
-    document.querySelector('body').classList.remove('opened-menu');
-    document.querySelector('#logo-menu').classList.remove('opened-menu');
-    document.querySelector('nav').classList.remove('opened-menu');
-    document.querySelector('.drop-button').classList.remove('opened-menu');
-}
-
-const changeMenuButtonScin = function() {
-    const imageButtonElement = document.querySelector('.img-drop-button');
-    if (imageButtonElement.src.search(/drop_button-light.svg/) !== -1) {
-        imageButtonElement.src = '../../assets/icons/drop_button-dark.svg';
-    } else {
-        imageButtonElement.src = '../../assets/icons/drop_button-light.svg';
-    }
 }
 
 const getRandomInt = function(maxInt, minInt = 0) {
     return Math.floor(Math.random() * (maxInt - minInt + 1)) + minInt; //max and min inclusive
 }
 
-const getRandomPets = function(petsArray) {
-    //generate pets Array for main`s page slider
+export const getPetObjByName = function(petsArray, petName) {
+    return petsArray.find(item => item.name === petName);
+}
+
+export const getNextRandomPets = function(petsArray) {
     const activePets = [];
     const petsCardsElements = document.querySelectorAll('.card');
     for (let petCardElement of petsCardsElements) {
@@ -127,42 +105,17 @@ const buttonDisablerSwitch  = function (currentPageNumber, lastPageNumber) {
     }
 }
 
-const updateSliderRandom = function(petsArray) {
-    const nextPetsArray = getRandomPets(petsArray);
-    updateMainPageWithContent(nextPetsArray);
-}
-
-const animateSlider = function(sideName) {
-    const petsCardsElements = document.querySelectorAll('.card');
-    const animatedClassName = 'card-animated-' + sideName;
-    for (let petCardElement of petsCardsElements) {
-        petCardElement.classList.add(animatedClassName);
-    }
-    setTimeout(() => {
-        for (let petCardElement of petsCardsElements) {
-            petCardElement.classList.remove(animatedClassName);
-        }
-    }, 500);
-
-}
-
-const getPetObjByName = function(petsArray, petName) {
-    return petsArray.filter(item => item.name === petName)[0];
-}
-
 const createPetCardElement = function(petObj) {
-    const cardElement = createCompleteElement('div', 'card open-popup');
-    const graphicElement = createCompleteElement('div', 'graphic');
-    const imageElement = createCompleteElement('img', 'open-popup');
-    imageElement.src = petObj.img;
-    imageElement.alt = `${petObj.type} ${petObj.name}`;
-    imageElement.width = `270`;
-    imageElement.height = `270`;
-    const textElement = createCompleteElement('p', 'open-popup', petObj.name);
-    const buttonElement = createCompleteElement('div', 'button button-light button-card open-popup', 'Learn more');
+    const htmlTemplate = `
+        <div class="graphic">
+            <img class="open-popup" src="${petObj.img}" alt="${petObj.type} ${petObj.name}" width="270" height="270">
+        </div>
+        <p class="open-popup">${petObj.name}</p>
+        <div class="button button-light button-card open-popup">
+            Learn more
+        </div>`
 
-    graphicElement.append(imageElement);
-    cardElement.append(graphicElement, textElement, buttonElement);
+    const cardElement = createCompleteElement('div', 'card open-popup', htmlTemplate);
 
     return cardElement;
 }
@@ -177,17 +130,17 @@ const createPetsContainerElement = function(petsArray) {
 
 export const addMainPageContent = function(petsArray) {
     const cardElements = [];
-    const additionalClasses = ['right-card', 'central-card', 'left-card'];
+    const additionalClasses = ['left-card', 'central-card', 'right-card'];
     //3-cards grid
     for (let index = 0; index < 3; index++) {
         const PetCardElement = createPetCardElement(petsArray[index]);
-        PetCardElement.classList.add(additionalClasses.pop());
+        PetCardElement.classList.add(additionalClasses[index]);
         cardElements.push(PetCardElement);
     }
     document.querySelector('.slider-card-frame').append(...cardElements);
 }
 
-const updateMainPageWithContent = function(petsArray) {
+export const updateMainPageWithContent = function(petsArray) {
     const petsCardsElements = document.querySelectorAll('.card');
     let petsArrayIndex = 0;
     for (let petCardElement of petsCardsElements) {
@@ -210,142 +163,28 @@ export const fillPetsPageWithContent = function(petsArray, pageNumber, lastPageN
     buttonDisablerSwitch(pageNumber, lastPageNumber)
 }
 
-const createPopupWindow = function(petObj) {
-    const popupWindowElement = createCompleteElement('div', 'popup-window');
-    const popupContentElement = createCompleteElement('div', 'popup-content');
-    const popupDivImageElement = createCompleteElement('div', 'popup-image');
-    const popupImageElement = createCompleteElement('img');
-    popupImageElement.src = petObj.img;
-    popupImageElement.alt = `${petObj.type} ${petObj.name}`;
-    popupImageElement.width = '500';
-    popupImageElement.height = '500';
-    const popupTextElement = createCompleteElement('div', 'popup-text');
-    const popupPetNameElement = createCompleteElement('h3', 'popup-pet-name', petObj.name);
-    const popupPetTypeElement = createCompleteElement('h4', 'popup-pet-type', `${petObj.type} - ${petObj.breed}`);
-    const popupPetDescrElement = createCompleteElement('h5', 'popup-pet-description', petObj.description);
-    const popupPetPropElement = createCompleteElement('ul', 'popup-pet-properties');
-    const popupPetAgeElement = createCompleteElement('li', 'popup-pet-age', `<strong>Age:</strong> ${petObj.age}`);
-    const popupPetInoculationsElement = createCompleteElement('li', 'popup-pet-inoculations', `<strong>Inoculations:</strong> ${petObj.inoculations.join(', ')}`);
-    const popupPetDiseasesElement = createCompleteElement('li', 'popup-pet-diseases', `<strong>Diseases:</strong> ${petObj.diseases.join(', ')}`);
-    const popupPetParasitesElement = createCompleteElement('li', 'popup-pet-parasites', `<strong>Parasites:</strong> ${petObj.parasites.join(', ')}`);
-    const popupButtonContent = '<img class="cross-image" src="../../assets/icons/button-cross.svg" alt="cross" width="12" height="12">'
-    const popupButtonElement = createCompleteElement('div', 'button button-light popup-button', popupButtonContent);
+export const createPopupWindow = function(petObj) {
+    const htmlTemplate = `
+            <div class="popup-content">
+                <div class="popup-image">
+                    <img src="${petObj.img}" alt="${petObj.type} ${petObj.name}" width="500" height="500">
+                </div>
+                <div class="popup-text">
+                    <h3 class="popup-pet-name">${petObj.name}</h3>
+                    <h4 class="popup-pet-type">${petObj.type} - ${petObj.breed}</h4>
+                    <h5 class="popup-pet-description">${petObj.description}</h5>
+                    <ul class="popup-pet-properties">
+                        <li class="popup-pet-age"><strong>Age:</strong> ${petObj.age}</li>
+                        <li class="popup-pet-inoculations"><strong>Inoculations:</strong> ${petObj.inoculations.join(', ')}</li>
+                        <li class="popup-pet-diseases"><strong>Diseases:</strong> ${petObj.diseases.join(', ')}</li>
+                        <li class="popup-pet-parasites"><strong>Parasites:</strong> ${petObj.parasites.join(', ')}</li>
+                    </ul>
+                </div>
+                <div class="button button-light popup-button">
+                    <img class="cross-image" src="../../assets/icons/button-cross.svg" alt="cross" width="12" height="12">
+                </div>
+            </div>`
 
-    popupPetPropElement.append(popupPetAgeElement, popupPetInoculationsElement, popupPetDiseasesElement, popupPetParasitesElement);
-    popupTextElement.append(popupPetNameElement, popupPetTypeElement, popupPetDescrElement, popupPetPropElement);
-    popupDivImageElement.append(popupImageElement);
-    popupContentElement.append(popupDivImageElement, popupTextElement, popupButtonElement);
-    popupWindowElement.append(popupContentElement);
-
+    const popupWindowElement = createCompleteElement('div', 'popup-window', htmlTemplate);
     return popupWindowElement;
-}
-
-const openPopupWindow = function(popupWindowElement) {
-    document.querySelector('main').prepend(popupWindowElement);
-    document.querySelector('body').classList.add('opened-popup');
-}
-
-const closePopupWindow = function() {
-    document.querySelector('.popup-window').remove();
-    document.querySelector('body').classList.remove('opened-popup')
-}
-
-export const mainPageClickInteractive = function(event, petsArray) {
-    switch (true) {
-        //clicking on menu burger button
-        case (event.target.classList.contains('img-drop-button')):
-            openOrCloseMenu();
-            break;
-        //clicking anywhere else when burger menu opened
-        case (!event.target.classList.contains('img-drop-button') && document.querySelector('body').classList.contains('opened-menu')):
-            closeMenu();
-            break;
-        //clicking on slider arrow-button
-        case (['button-slider-arrow', 'arrow-image'].filter(className => event.target.classList.contains(className)).length > 0):
-            if (event.target.classList.contains('right')) {
-                animateSlider('left');
-            } else {
-                animateSlider('right');
-            }
-            setTimeout(() => updateSliderRandom(petsArray), 250);
-            break;
-        //clicking on pet`s card
-        case (event.target.classList.contains('open-popup')):
-            let targetCardElement = event.target;
-            while (!targetCardElement.classList.contains('card')) {
-                targetCardElement = targetCardElement.parentElement;
-            }
-            const petObj = getPetObjByName(petsArray, targetCardElement.querySelector('p').innerHTML);
-            openPopupWindow(createPopupWindow(petObj));
-            break;
-        //clicking on cross-button or out of popup when it opened
-        case (['popup-window', 'popup-button', 'cross-image'].filter(className => event.target.classList.contains(className)).length > 0):
-            closePopupWindow();
-            break;
-    }
-}
-
-export const petsPageClickInteractive = function(event, petsArray, responsivePetsDataSetArray) {
-    const currentDataSet = getCurrentDataSet(responsivePetsDataSetArray);
-    switch (true) {
-        //clicking on menu burger button
-        case (event.target.classList.contains('img-drop-button')):
-            openOrCloseMenu();
-            changeMenuButtonScin();
-            break;
-        //clicking anywhere else when burger menu opened
-        case (!event.target.classList.contains('img-drop-button') && document.querySelector('body').classList.contains('opened-menu')):
-            closeMenu();
-            changeMenuButtonScin();
-            break;
-        //clicking on paginator`s buttons
-        case (['button-single', 'button-double'].filter(className => event.target.classList.contains(className)).length > 0):
-            const pageNumberElement = document.querySelector('.page-number');
-            let currentPageNumber = Number(pageNumberElement.innerHTML);
-            switch (true) {
-                //clicking on left single button
-                case (['button-left', 'button-single'].filter(className => event.target.classList.contains(className)).length === 2):
-                    if (currentPageNumber !== 1) {
-                        currentPageNumber--;
-                    }
-                    break;
-                //clicking on right single button
-                case (['button-right', 'button-single'].filter(className => event.target.classList.contains(className)).length === 2):
-                    if (currentPageNumber !== currentDataSet.length) {
-                        currentPageNumber++;
-                    }
-                    break;
-                //clicking on left double button
-                case (['button-left', 'button-double'].filter(className => event.target.classList.contains(className)).length === 2):
-                        currentPageNumber = 1;
-                    break;
-                //clicking on right double button
-                case (['button-right', 'button-double'].filter(className => event.target.classList.contains(className)).length === 2):
-                        currentPageNumber = currentDataSet.length;
-                    break;
-            }
-            pageNumberElement.innerHTML = currentPageNumber;
-            fillPetsPageWithContent(currentDataSet[currentPageNumber - 1], currentPageNumber, currentDataSet.length);
-            break;
-        //clicking on pet`s card
-        case (event.target.classList.contains('open-popup')):
-            let targetCardElement = event.target;
-            while (!targetCardElement.classList.contains('card')) {
-                targetCardElement = targetCardElement.parentElement;
-            }
-            const petObj = getPetObjByName(petsArray, targetCardElement.querySelector('p').innerHTML);
-            openPopupWindow(createPopupWindow(petObj));
-            break;
-        //clicking on cross-button or out of popup when it opened
-        case (['popup-window', 'popup-button', 'cross-image'].filter(className => event.target.classList.contains(className)).length > 0):
-            closePopupWindow();
-            break;
-    }
-}
-
-export const updateResizedPetsPage = function(responsivePetsDataSetArray) {
-    const currentDataSet = getCurrentDataSet(responsivePetsDataSetArray);
-    let currentPageNumber = Number(document.querySelector('.page-number').innerHTML);
-    currentPageNumber = (currentPageNumber > currentDataSet.length) ? currentDataSet.length : currentPageNumber;
-    fillPetsPageWithContent(currentDataSet[currentPageNumber-1], currentPageNumber, currentDataSet.length)
 }

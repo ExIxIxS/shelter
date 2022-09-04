@@ -88,12 +88,12 @@ header {
     justify-content: space-between;
 }
 
-#logo, #logo-menu {
+#logo, .logo-menu {
     width: 184px;
     height: 60px;
 }
 
-#logo-menu {
+.logo-menu {
     visibility: hidden;
     position: fixed;
     top: 30px;
@@ -102,7 +102,7 @@ header {
     transition: all 0.5s ease-out;
 }
 
-h1, #logo-menu h2 {
+h1, .logo-menu h2 {
     width: 190px;
     height: 35px;
     margin: 0;
@@ -155,7 +155,7 @@ h4 {
     border-color: #00000000;
 }
 
-#logo h2, #logo-menu h3 {
+#logo h2, .logo-menu h3 {
     width: 179px;
     height: 15px;
     font-family: 'Source Sans Pro', sans-serif;
@@ -1054,7 +1054,7 @@ footer .container_centered {
         font-size: calc(25vw*100/320);
     }
 
-    #logo-menu.opened-menu {
+    .logo-menu.opened-menu {
         visibility: visible;
         right: 126px;
     }
@@ -1548,7 +1548,7 @@ footer .container_centered {
 }
 
 @media (max-width: 767px) and (max-height: 460px) {
-    #logo-menu, .drop-button {
+    .logo-menu, .drop-button {
         z-index: 8;
     }
 }

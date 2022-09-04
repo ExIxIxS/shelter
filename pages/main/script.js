@@ -1,6 +1,8 @@
-import {addMainPageContent,
-        mainPageClickInteractive
+import {addMainPageContent
 } from '../../assets/scripts/common.js';
+
+import {mainPageClickInteractive
+} from '../../assets/scripts/userActions.js';
 
 fetch('../../assets/json/pets.json') //path to the file with json data
         .then(response => {
