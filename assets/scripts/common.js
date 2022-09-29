@@ -1,7 +1,7 @@
-const createCompleteElement = function(type, className, innerHTML) {
+const createCompleteElement = function(type, className = '', innerHTML = '') {
     const element = document.createElement(type);
-    element.className = (className) ? className : '';
-    element.innerHTML = (innerHTML) ? innerHTML : '';
+    element.className = className;
+    element.innerHTML = innerHTML;
     return element;
 }
 

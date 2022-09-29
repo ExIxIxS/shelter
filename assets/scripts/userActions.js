@@ -30,7 +30,7 @@ const changeMenuButtonScin = function() {
     const imageButtonElement = document.querySelector('.img-drop-button');
     const lightButtonIconName = "drop_button-light";
     const darkButtonIconName = "drop_button-dark";
-    const isButtonLight = (imageButtonElement.src.search(lightButtonIconName) >= 0) ? true : false;
+    const isButtonLight = (imageButtonElement.src.search(lightButtonIconName) >= 0);
 
     imageButtonElement.src = `../../assets/icons/${isButtonLight ? darkButtonIconName : lightButtonIconName}.svg`;
 }
